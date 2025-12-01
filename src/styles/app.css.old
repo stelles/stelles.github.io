@@ -1,0 +1,121 @@
+/* fonts */
+@import "@fontsource/atkinson-hyperlegible";
+@import "@fontsource/monaspace-neon";
+@import "@fontsource/inter";
+
+/* tailwind */
+@import "tailwindcss";
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+@theme {
+  --color-content: oklch(20% 0.01 272);
+
+  --color-primary: oklch(33.371% 0.07441 152.94);
+  /* Forest green, softer than original */
+  --color-secondary: oklch(77.499% 0.08589 159.07);
+  /* Very light green for highlights */
+
+  --color-accent: oklch(49.103% 0.18699 319.602);
+  /* Grayscale accent with bluish tint */
+  --color-tertiary: oklch(70% 0.05 320);
+  /* Slate blue-gray, Notion-like */
+
+  --color-surface: oklch(100% 0 0);
+  /* Pure white for surfaces */
+  --color-muted: oklch(92% 0 0);
+  /* Light gray for subtle elements */
+  --color-background: oklch(98% 0.005 240);
+  /* Off-white background, Notion-like */
+
+  --r-main-font: "Atkinson Hyperlegible";
+  --r-main-font-size: 42px;
+  --r-main-color: oklch(98% 0.02 272);
+}
+
+.dark {
+  --color-primary: oklch(75% 0.15 145);
+  /* Brighter green for dark mode */
+  --color-muted: oklch(28% 0.02 240);
+  /* Muted slate color */
+  --color-tertiary: oklch(50% 0.03 240);
+  /* Medium gray with blue tint */
+  --color-surface: oklch(18% 0.02 240);
+  /* Dark blue-gray for surfaces */
+  --color-accent: oklch(65% 0.02 240);
+  /* Medium-light gray accent */
+
+  --color-content: oklch(95% 0.01 240);
+  /* Off-white text */
+  --color-secondary: oklch(77.499% 0.08589 159.07);
+  /* Very light green for highlights */
+
+  --color-background: oklch(12% 0.02 240);
+  /* Very dark blue-gray background */
+}
+
+/* code block background */
+div:has(> pre) {
+  padding: --spacing(4) --spacing(8);
+  background-color: oklch(24% 0.02 272);
+  border-top: 1px solid oklch(34% 0.02 272);
+  border-radius: var(--radius-lg);
+}
+
+/* for animations */
+.hidden {
+  display: none;
+}
+
+/* view transitions */
+html {
+  view-transition-name: none;
+}
+
+/* all view transitions */
+::view-transition-group(*) {
+  animation-duration: var(--view-transition-duration);
+  animation-timing-function: var(--ease);
+}
+
+/* entry transition */
+::view-transition-new(*):only-child {
+  animation: scale-in var(--view-transition-duration) var(--ease);
+}
+
+/* exit transition */
+::view-transition-old(*):only-child {
+  animation: scale-out var(--view-transition-duration) var(--ease);
+}
+
+@keyframes scale-in {
+  from {
+    scale: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes scale-out {
+  to {
+    scale: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    opacity: 0;
+  }
+
+  20% {
+    rotate: 0deg;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}

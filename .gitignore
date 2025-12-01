@@ -1,0 +1,65 @@
+.DS_Store
+# Node
+node_modules/
+
+# Build / Vite / SvelteKit outputs
+/build
+/dist
+/.svelte-kit
+/out
+
+# Vercel / Netlify / other hosting
+/.vercel
+/.vercel_build_output
+/.vercel_build
+/.netlify
+/.netlify/*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+.env.local
+
+# Cache
+.cache
+.parcel-cache
+node_modules/.vite/
+
+# Test / Coverage
+coverage/
+lcov-report/
+
+# Editor directories and project files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# System
+Thumbs.db
+.DS_Store
+
+# Timestamped config backups
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Docker
+# Local override files that include secrets or developer settings
+docker-compose.override.yml
+docker-compose.*.local.yml
+docker-compose.local.yml
+# Local volumes / runtime data for docker setups
+docker/volumes/
+docker/data/
+.docker/
+.docker/*
