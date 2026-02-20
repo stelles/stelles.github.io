@@ -63,3 +63,5 @@ docker/volumes/
 docker/data/
 .docker/
 .docker/*
+gallery-dl
+gallery-dl

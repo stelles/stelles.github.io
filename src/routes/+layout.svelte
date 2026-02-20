@@ -25,13 +25,15 @@
   });
 </script>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/resume">Resume</a>
-  <button onclick={() => (darkmode = !darkmode)}>
-    {darkmode ? "☀️" : "🌙"}
-  </button>
-</nav>
+<header>
+  <nav class="print:hidden">
+    <a href="/">Home</a>
+    <a href="/resume">Resume</a>
+    <button onclick={() => (darkmode = !darkmode)}>
+      {darkmode ? "☀️" : "🌙"}
+    </button>
+  </nav>
+</header>
 
 <svelte:head>
   <title>"Sam Stelle"</title>
