@@ -6,22 +6,13 @@
 
   let darkmode = $state(false);
 
-  //   onMount(() => {
-  //     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  //     darkmode = mediaQuery.matches;
-
-  //     const handler = (e: MediaQueryListEvent) => (darkmode = e.matches);
-  //     mediaQuery.addEventListener("change", handler);
-
-  //     return () => mediaQuery.removeEventListener("change", handler);
-  //   });
+  onMount(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    darkmode = mediaQuery.matches;
+  });
 
   $effect(() => {
-    if (darkmode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", darkmode);
   });
 </script>
 
