@@ -3,7 +3,17 @@
     "allow": [
       "mcp__plugin_serena_serena__check_onboarding_performed",
       "mcp__plugin_serena_serena__list_memories",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "mcp__plugin_serena_serena__list_dir",
+      "Bash(curl -s http://localhost:5173/resume -o /dev/null -w \"%{http_code}\")",
+      "Bash(bunx svelte-kit sync)",
+      "Bash(bun run prepare)",
+      "Bash(bun install)",
+      "mcp__711cd35e-a9b6-429a-9fa4-929b14ff6864__resolve-library-id",
+      "mcp__711cd35e-a9b6-429a-9fa4-929b14ff6864__query-docs",
+      "mcp__plugin_svelte_svelte__svelte-autofixer",
+      "Bash(bun run check)",
+      "Bash(npx @sveltejs/mcp svelte-autofixer ./src/routes/resume/+page.svelte)"
     ]
   }
 }

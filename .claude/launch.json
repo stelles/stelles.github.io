@@ -2,22 +2,14 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "SvelteKit Dev",
-      "runtimeExecutable": "bunx",
+      "name": "Dev Server",
+      "runtimeExecutable": "bun",
       "runtimeArgs": [
-        "vite",
-        "dev"
+        "run",
+        "dev",
+        "--host"
       ],
-      "port": 5173
-    },
-    {
-      "name": "Vite Preview",
-      "runtimeExecutable": "bunx",
-      "runtimeArgs": [
-        "vite",
-        "preview"
-      ],
-      "port": 4173
+      "autoPort": true
     }
   ]
 }

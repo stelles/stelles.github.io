@@ -7,17 +7,17 @@ This is an Animotion presentation.
 Install dependencies:
 
 ```sh
-pnpm i
+bun i
 ```
 
 Run the development server at http://localhost:5173/:
 
 ```sh
-pnpm run dev
+bun run dev
 ```
 
 Build and preview deploy:
 
 ```sh
-pnpm run build && pnpm run preview
+bun run build && bun run preview
 ```

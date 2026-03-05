@@ -227,7 +227,7 @@ The dark mode toggle is in `+layout.svelte`:
 1. **Reactivity requires runes**: Plain `let` variables are NOT reactive in this project
 2. **Children prop pattern**: Always use `{@render children?.()}` with optional chaining
 3. **Tailwind v4 differences**: No traditional config file, uses CSS-first approach
-4. **Bun as package manager**: Use `bun` commands, not `npm` or `pnpm`
+4. **Bun as package manager**: Use `bun` commands, not `npm` or `bun`
 5. **Dark mode class**: Applied to `documentElement`, not `<body>`
 6. **Component refs**: Use `$bindable(null)` pattern with `WithElementRef` type
 
