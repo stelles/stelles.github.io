@@ -4,15 +4,21 @@
 
   let { children } = $props();
 
-  let darkmode = $state(false);
+  let darkmode = $state<boolean | null>(null);
 
   onMount(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    darkmode = mediaQuery.matches;
+    const stored = localStorage.getItem("theme");
+    if (stored !== null) {
+      darkmode = stored === "dark";
+    } else {
+      darkmode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
   });
 
   $effect(() => {
+    if (darkmode === null) return;
     document.documentElement.classList.toggle("dark", darkmode);
+    localStorage.setItem("theme", darkmode ? "dark" : "light");
   });
 </script>
 
@@ -20,7 +26,7 @@
   <nav class="print:hidden">
     <a href="/">Home</a>
     <a href="/resume">Resume</a>
-    <button onclick={() => (darkmode = !darkmode)}>
+    <button onclick={() => (darkmode = !darkmode)} class:invisible={darkmode === null}>
       {darkmode ? "☀️" : "🌙"}
     </button>
   </nav>
