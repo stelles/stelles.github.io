@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import { JobEntry, SectionHeader } from '$lib/components/ui/resume/index.js';
-  import { Sam, Skills, Experience, contactLinks } from '$lib/resume';
+  import Icon from "@iconify/svelte";
+  import { JobEntry, SectionHeader } from "$lib/components/ui/resume/index.js";
+  import { Sam, Skills, Experience, contactLinks } from "$lib/resume";
 
   const skillEntries = Object.entries(Skills);
 
@@ -47,8 +47,8 @@
           {#each contactLinks as link (link.href)}
             <a
               href={link.href}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               class="flex items-center gap-1 transition-colors hover:text-highlight"
             >
               <Icon icon={link.icon} class="h-3.5 w-3.5" />{link.text}
@@ -75,7 +75,7 @@
                 >
                   {category}:
                 </span>
-                <span class="text-content text-sm">{skillList.join(', ')}</span>
+                <span class="text-content text-sm">{skillList.join(", ")}</span>
               </div>
             {/each}
           </div>
@@ -128,7 +128,7 @@
 
 <style>
   @media print {
-    :global([data-slot='separator']) {
+    :global([data-slot="separator"]) {
       border-top: 1px solid #888;
       height: 0 !important;
       background: transparent !important;
