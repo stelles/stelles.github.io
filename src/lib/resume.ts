@@ -25,6 +25,15 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const Skills: Record<string, string[]> = {
+  "AI Dev Tools": [
+    "claude",
+    "gemini-cli",
+    "copilot",
+    "codex",
+    "opencode",
+    "openclaw",
+    "multi-agent"
+  ],
   Languages: [
     "TypeScript/JavaScript",
     "Python",
