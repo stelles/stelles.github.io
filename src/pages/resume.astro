@@ -18,17 +18,19 @@ const skillEntries = Object.entries(Skills);
       </button>
       <div class="bg-surface border-border w-full rounded border p-4 shadow-sm print:p-0 print:shadow-none print:border-0 print:rounded-none">
         <!-- Header -->
-        <section class="text-center text-content mb-4">
-          <h1 class="text-4xl text-foreground">
-            <span class="font-light">{Sam.firstName} </span>
-            <span class="font-bold">{Sam.lastName}</span>
-          </h1>
-          <div class="text-sm tracking-widest uppercase mt-1">{Sam.title}</div>
-          <div class="flex items-center justify-center gap-1 text-sm mt-0.5">
-            <iconify-icon icon="mdi:map-marker" class="h-3.5 w-3.5"></iconify-icon>
-            {Sam.location}
+        <section class="flex items-start justify-between gap-4 text-content mb-4">
+          <div>
+            <h1 class="text-4xl text-foreground">
+              <span class="font-light">{Sam.firstName} </span>
+              <span class="font-bold">{Sam.lastName}</span>
+            </h1>
+            <div class="text-sm tracking-widest uppercase mt-1">{Sam.title}</div>
+            <div class="flex items-center gap-1 text-sm mt-0.5">
+              <iconify-icon icon="mdi:map-marker" class="h-3.5 w-3.5"></iconify-icon>
+              {Sam.location}
+            </div>
           </div>
-          <div class="flex flex-wrap justify-center gap-x-5 gap-y-0.5 text-sm mt-2">
+          <div class="flex flex-col items-end gap-0.5 text-sm shrink-0">
             {contactLinks.map(link => (
               <a
                 href={link.href}
@@ -36,7 +38,7 @@ const skillEntries = Object.entries(Skills);
                 rel={link.external ? 'noopener noreferrer' : undefined}
                 class="flex items-center gap-1 transition-colors hover:text-highlight"
               >
-                <iconify-icon icon={link.icon} class="h-3.5 w-3.5"></iconify-icon>{link.text}
+                {link.text}<iconify-icon icon={link.icon} class="h-3.5 w-3.5"></iconify-icon>
               </a>
             ))}
           </div>
