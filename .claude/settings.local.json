@@ -29,5 +29,20 @@
       "Bash(npx astro *)",
       "Bash(npx tsc *)"
     ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git pull*)",
+            "command": "git diff HEAD@{1} --name-only 2>/dev/null | grep -q 'package\\.json' && bun install || true",
+            "statusMessage": "package.json changed — running bun install..."
+          }
+        ]
+      }
+    ]
   }
 }

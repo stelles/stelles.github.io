@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TARGET_FIELDS } from "../minerals/minerals";
   import type { MineralNames } from "../minerals/minerals";
-  import { targetLiters, target, updateTargetField } from "../state/mineralState";
+  import { target, updateTargetField } from "../state/mineralState";
 
   type SubscriptToken = string | { sub: string };
 
@@ -49,7 +49,6 @@
 >
   <div class="flex items-center justify-between">
     <div>
-      <p class="text-sm uppercase tracking-wide text-cyan-700">Step 3</p>
       <p class="text-lg font-semibold text-slate-900">Target Composition</p>
       <p class="text-sm text-slate-600">Set ion targets in mg/L.</p>
     </div>
@@ -84,16 +83,5 @@
         />
       </div>
     {/each}
-    <div class="space-y-2">
-      <label for="liters" class="text-sm font-medium text-slate-600">Volume (liters)</label>
-      <input
-        id="liters"
-        type="number"
-        min={0.1}
-        step={0.1}
-        class="w-full rounded-xl border border-cyan-200/70 bg-white/90 p-2.5 text-sm text-slate-900 shadow-sm focus:border-cyan-400 focus:ring-cyan-300 font-['IBM_Plex_Mono',ui-monospace] tabular-nums"
-        bind:value={$targetLiters}
-      />
-    </div>
   </div>
 </div>
