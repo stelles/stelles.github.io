@@ -1,7 +1,6 @@
 <script lang="ts">
   import { MINERALS, TARGET_FIELDS } from "../minerals/minerals";
-  import type { MineralNames } from "../minerals/minerals";
-  import { target, updateTargetField, tapWaterComposition } from "../state/mineralState";
+  import { target, tapWaterComposition } from "../state/mineralState";
 
   type FormulaToken = string | { sub: string };
 
@@ -19,11 +18,6 @@
     const rest = html.slice(lastIdx).replace(/<[^>]*>/g, "");
     if (rest) tokens.push(rest);
     return tokens;
-  };
-
-  const handleInput = (key: MineralNames) => (event: Event) => {
-    if (!(event.currentTarget instanceof HTMLInputElement)) return;
-    updateTargetField(key, Number(event.currentTarget.value));
   };
 
   const rows = TARGET_FIELDS.map((field) => ({
@@ -47,9 +41,7 @@
         <tr class="border-y border-cyan-100/70 bg-cyan-50/40 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
           <th class="px-4 py-2 text-left">Ion</th>
           <th class="px-4 py-2">Target</th>
-          <th class="px-3 py-2 font-normal text-slate-400">−</th>
           <th class="px-4 py-2">Tap</th>
-          <th class="px-3 py-2 font-normal text-slate-400">=</th>
           <th class="px-4 py-2">Add</th>
         </tr>
       </thead>
@@ -58,28 +50,18 @@
           {@const tap = tapWaterComposition[row.key] ?? 0}
           {@const deficit = Math.max(0, ($target[row.key] ?? 0) - tap)}
           <tr class="border-b border-cyan-100/40 last:border-0 {i % 2 === 1 ? 'bg-cyan-50/20' : ''}">
-            <td class="px-4 py-2 font-['IBM_Plex_Mono',ui-monospace] text-xs text-slate-500">
+            <td class="px-4 py-2 font-['IBM_Plex_Mono',ui-monospace] text-xs text-slate-700">
               {#each row.tokens as token}
                 {#if typeof token === "string"}{token}{:else}<sub>{token.sub}</sub>{/if}
               {/each}
             </td>
-            <td class="px-4 py-1.5 text-right">
-              <input
-                id={row.key}
-                type="number"
-                min="0"
-                step="0.1"
-                class="w-20 rounded-lg border border-cyan-200/70 bg-white/90 px-2 py-1 text-right text-sm tabular-nums text-slate-900 shadow-sm focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-300 font-['IBM_Plex_Mono',ui-monospace]"
-                value={$target[row.key] ?? 0}
-                oninput={handleInput(row.key)}
-              />
+            <td class="px-4 py-2 text-right font-['IBM_Plex_Mono',ui-monospace] tabular-nums text-slate-800">
+              {$target[row.key] ?? 0}
             </td>
-            <td class="px-3 py-2 text-center text-slate-300">−</td>
-            <td class="px-4 py-2 text-right font-['IBM_Plex_Mono',ui-monospace] tabular-nums text-slate-400">
+            <td class="px-4 py-2 text-right font-['IBM_Plex_Mono',ui-monospace] tabular-nums text-slate-600">
               {tap}
             </td>
-            <td class="px-3 py-2 text-center text-slate-300">=</td>
-            <td class="px-4 py-2 text-right font-['IBM_Plex_Mono',ui-monospace] tabular-nums {deficit > 0 ? 'text-cyan-700 font-semibold' : 'text-slate-300'}">
+            <td class="px-4 py-2 text-right font-['IBM_Plex_Mono',ui-monospace] tabular-nums {deficit > 0 ? 'text-cyan-700 font-semibold' : 'text-slate-400'}">
               {deficit.toFixed(1)}
             </td>
           </tr>
