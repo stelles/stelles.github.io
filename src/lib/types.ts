@@ -5,17 +5,22 @@ export interface Resume {
   title: string;
   summary: string;
   skills: Record<SkillCategory, string[]>;
-  experience: JobEntry[];
+  experience: OrgEntry[];
 }
 
-export interface JobEntry {
+export interface Position {
   title: string;
   dateRange: string;
-  company: string;
-  location: string;
   description?: string;
   responsibilities: string[];
 }
+
+export interface OrgEntry {
+  company: string;
+  location: string;
+  positions: Position[];
+}
+
 export type ContactLink = {
   href: string;
   icon: string;
