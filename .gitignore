@@ -2,10 +2,11 @@
 # Node
 node_modules/
 
-# Build / Vite / SvelteKit outputs
+# Build outputs
 /build
 /dist
 /.svelte-kit
+/.astro
 /out
 
 # Vercel / Netlify / other hosting

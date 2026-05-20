@@ -2,18 +2,14 @@
 	"name": "animotion",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"check": "astro check"
 	},
 	"devDependencies": {
 		"@internationalized/date": "^3.8.1",
 		"@lucide/svelte": "^0.544.0",
-		"@sveltejs/adapter-auto": "^6.0.1",
-		"@sveltejs/kit": "^2.22.0",
-		"@sveltejs/vite-plugin-svelte": "^5.1.0",
 		"@types/reveal.js": "^5.2.0",
 		"bits-ui": "^2.11.0",
 		"clsx": "^2.1.1",
@@ -36,11 +32,14 @@
 	"dependencies": {
 		"@animotion/core": "*",
 		"@animotion/motion": "*",
+		"@astrojs/svelte": "^8.1.1",
 		"@fontsource/atkinson-hyperlegible": "^5.2.6",
 		"@fontsource/inter": "^5.2.8",
 		"@fontsource/monaspace-neon": "^5.2.5",
 		"@iconify/svelte": "^5.1.0",
 		"@tailwindcss/vite": "^4.1.17",
+		"astro": "^6.3.5",
+		"iconify-icon": "^3.0.2",
 		"reveal.js": "^5.2.1",
 		"tailwindcss": "^4.1.17"
 	}

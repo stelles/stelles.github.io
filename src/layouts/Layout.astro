@@ -1,0 +1,58 @@
+---
+import '../styles/app.css';
+import DarkModeToggle from '../components/DarkModeToggle.svelte';
+
+const navLinks = [
+  { href: '/resume', label: 'Resume' },
+  { href: '/portfolio/mineral-water', label: 'Mineral Water' },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sam Stelle</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script>
+      import 'iconify-icon';
+    </script>
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-background text-foreground">
+    <header class="print:hidden sticky top-0 z-40 border-b border-border bg-surface/90 text-content backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
+        <a
+          href="/"
+          class="text-sm font-semibold tracking-wide uppercase text-foreground hover:text-highlight transition-colors"
+        >
+          Sam Stelle
+        </a>
+        <nav class="flex items-center gap-2">
+          <a
+            href="/"
+            class="rounded px-2.5 py-1 text-sm font-medium text-content hover:text-highlight hover:bg-surface-secondary transition-colors"
+          >
+            Home
+          </a>
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class="rounded px-2.5 py-1 text-sm font-medium text-content hover:text-highlight hover:bg-surface-secondary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <DarkModeToggle client:only="svelte" />
+        </nav>
+      </div>
+    </header>
+    <slot />
+  </body>
+</html>
