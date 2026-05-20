@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { MINERAL_WATERS } from "../minerals/mineralwaters";
-  import { TapWaters } from "../minerals/mineralwaters";
   import {
     loadPreset,
     presetNames,
     resetState,
     selectedWaterIndex,
-    selectedTapWaterKey,
-    updateTapWater,
     MINERAL_WATER_LIST,
   } from "../state/mineralState";
 
@@ -15,8 +11,6 @@
     name: string;
     value: string;
   }>;
-
-  const tapWaterItems = Object.keys(TapWaters).map((key) => ({ key, name: TapWaters[key].name }));
 
   const handleLoad = (event: Event) => {
     if (!(event.currentTarget instanceof HTMLSelectElement)) {
@@ -27,13 +21,6 @@
     if (water) {
       loadPreset(water.name);
     }
-  };
-
-  const handleTapWaterChange = (event: Event) => {
-    if (!(event.currentTarget instanceof HTMLSelectElement)) {
-      return;
-    }
-    updateTapWater(event.currentTarget.value);
   };
 
   const handleReset = () => {
@@ -70,17 +57,9 @@
       {/each}
     </select>
 
-    <label for="tap-water" class="text-sm text-slate-600">Tap Water Source</label>
-    <select
-      id="tap-water"
-      class="w-full rounded-xl border border-cyan-200/70 bg-white p-2.5 text-sm text-slate-900 shadow-sm focus:border-cyan-400 focus:ring-cyan-300"
-      value={$selectedTapWaterKey}
-      onchange={handleTapWaterChange}
-    >
-      {#each tapWaterItems as item (item.key)}
-        <option value={item.key}>{item.name}</option>
-      {/each}
-    </select>
+    <div class="text-sm text-slate-600">
+      Tap Water Source: <span class="font-medium text-slate-800">Seattle</span>
+    </div>
 
     <div class="flex flex-wrap gap-3">
       <button

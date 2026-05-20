@@ -17,18 +17,14 @@ export const target = writable<MineralWaterComposition>({ ...MINERAL_WATERS[0].c
 
 export const saltOptions = writable<SaltOptions>({ ...DEFAULT_SALT_OPTIONS });
 
-export const selectedTapWaterKey = writable<string>(Object.keys(TapWaters)[0] ?? "");
-
-const tapWaterComposition = derived(selectedTapWaterKey, ($key) => {
-  return TapWaters[$key]?.composition ?? EMPTY_COMPOSITION;
-});
+const tapWaterComposition = TapWaters["Seattle"]?.composition ?? EMPTY_COMPOSITION;
 
 export const presetNames = MINERAL_WATERS.map((water) => water.name);
 
 export const recipe = derived(
-  [target, saltOptions, tapWaterComposition],
-  ([$target, $saltOptions, $tap]) => {
-    return calculateRecipe($target, $tap, $saltOptions);
+  [target, saltOptions],
+  ([$target, $saltOptions]) => {
+    return calculateRecipe($target, tapWaterComposition, $saltOptions);
   },
 );
 
@@ -73,6 +69,3 @@ export const updateSaltOption = (key: keyof SaltOptions, enabled: boolean) => {
   }));
 };
 
-export const updateTapWater = (key: string) => {
-  selectedTapWaterKey.set(key);
-};

@@ -13,7 +13,21 @@
       "mcp__711cd35e-a9b6-429a-9fa4-929b14ff6864__query-docs",
       "mcp__plugin_svelte_svelte__svelte-autofixer",
       "Bash(bun run check)",
-      "Bash(npx @sveltejs/mcp svelte-autofixer ./src/routes/resume/+page.svelte)"
+      "Bash(npx @sveltejs/mcp svelte-autofixer ./src/routes/resume/+page.svelte)",
+      "Bash(git -C /home/samstelle/dev/stelles.github.io log --oneline)",
+      "Bash(bun remove *)",
+      "Bash(bun add *)",
+      "Bash(bun run *)",
+      "Bash(curl -s http://localhost:4321)",
+      "Bash(kill %1)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\)\")",
+      "Bash(curl -s http://localhost:4321/)",
+      "Bash(curl -s http://localhost:4321/resume)",
+      "Bash(curl -s http://localhost:4321/portfolio/mineral-water)",
+      "Bash(grep *)",
+      "Bash(git *)",
+      "Bash(npx astro *)",
+      "Bash(npx tsc *)"
     ]
   }
 }
