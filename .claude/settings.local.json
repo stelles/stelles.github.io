@@ -27,7 +27,10 @@
       "Bash(grep *)",
       "Bash(git *)",
       "Bash(npx astro *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(node *)",
+      "Bash(bunx astro *)",
+      "Bash(bunx tsc *)"
     ]
   },
   "hooks": {
@@ -37,8 +40,8 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Bash(git pull*)",
             "command": "git diff HEAD@{1} --name-only 2>/dev/null | grep -q 'package\\.json' && bun install || true",
+            "if": "Bash(git pull*)",
             "statusMessage": "package.json changed — running bun install..."
           }
         ]

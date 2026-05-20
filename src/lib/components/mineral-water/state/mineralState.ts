@@ -4,7 +4,7 @@ import { DEFAULT_SALT_OPTIONS } from "../minerals/salts";
 import type { MineralWaterComposition } from "../minerals/minerals";
 import { normalizeComposition, EMPTY_COMPOSITION } from "../minerals/minerals";
 import type { SaltOptions } from "../minerals/salts";
-import { calculateRecipe, recipeToGrams } from "../minerals/selectors";
+import { calculateRecipe, recipeToMiligrams } from "../minerals/selectors";
 
 export const MINERAL_WATER_LIST = MINERAL_WATERS;
 
@@ -17,7 +17,7 @@ export const target = writable<MineralWaterComposition>({ ...MINERAL_WATERS[0].c
 
 export const saltOptions = writable<SaltOptions>({ ...DEFAULT_SALT_OPTIONS });
 
-const tapWaterComposition = TapWaters["Seattle"]?.composition ?? EMPTY_COMPOSITION;
+export const tapWaterComposition = TapWaters["Seattle"]?.composition ?? EMPTY_COMPOSITION;
 
 export const presetNames = MINERAL_WATERS.map((water) => water.name);
 
@@ -29,7 +29,7 @@ export const recipe = derived(
 );
 
 export const grams = derived([recipe, targetLiters], ([$recipe, $liters]) => {
-  return recipeToGrams($recipe, $liters);
+  return recipeToMiligrams($recipe, $liters);
 });
 
 export const loadPreset = (name: string) => {

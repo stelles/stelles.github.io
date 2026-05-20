@@ -16,13 +16,13 @@ export const Salts = {
     formulaHtml: "NaCl",
     molarMass: 58.44,
   },
-  // plasterOfParis: {
-  //   name: "Plaster of Paris",
-  //   chemistryName: "Calcium sulfate hemihydrate",
-  //   formula: "CaSO4.0.5H2O",
-  //   formulaHtml: "CaSO<sub>4</sub>·0.5H<sub>2</sub>O",
-  //   molarMass: 145.15,
-  // },
+  plasterOfParis: {
+    name: "Plaster of Paris",
+    chemistryName: "Calcium sulfate hemihydrate",
+    formula: "CaSO4.0.5H2O",
+    formulaHtml: "CaSO<sub>4</sub>·½H<sub>2</sub>O",
+    molarMass: 145.15,
+  },
   epsomSalt: {
     name: "Epsom salt",
     chemistryName: "Magnesium sulfate heptahydrate",
@@ -44,13 +44,13 @@ export const Salts = {
     formulaHtml: "Mg(OH)<sub>2</sub>",
     molarMass: 58.3197,
   },
-  // calciumCarbonate: {
-  //   name: "Chalk",
-  //   chemistryName: "Calcium carbonate",
-  //   formula: "CaCO3",
-  //   formulaHtml: "CaCO<sub>3</sub>",
-  //   molarMass: 100.08,
-  // },
+  calciumCarbonate: {
+    name: "Chalk",
+    chemistryName: "Calcium carbonate",
+    formula: "CaCO3",
+    formulaHtml: "CaCO<sub>3</sub>",
+    molarMass: 100.08,
+  },
   potassiumBicarbonate: {
     name: "Potassium bicarbonate",
     chemistryName: "Potassium bicarbonate",
@@ -72,7 +72,6 @@ export type SaltOptions = Record<SaltKey, boolean>;
 const SALT_LIST = Object.values(Salts) as readonly SaltDefinition[];
 
 export const OPTIONAL_SALTS: SaltDefinition[] = [
-  Salts.potassiumBicarbonate,
   // Salts.calciumCarbonate,
 ];
 

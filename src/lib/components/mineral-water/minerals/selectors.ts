@@ -21,9 +21,9 @@ export const calculateRecipe = (
   return calc.calculate(target, tapWater);
 };
 
-export const recipeToGrams = (recipe: SaltRecipe, liters: number): Record<string, number> => {
+export const recipeToMiligrams = (recipe: SaltRecipe, liters: number): Record<string, number> => {
   const calc = new MineralCalculator();
-  return calc.recipeToGrams(recipe, liters);
+  return calc.recipeToMiligrams(recipe, liters);
 };
 
 export const totalGrams = (grams: Record<string, number>): number =>

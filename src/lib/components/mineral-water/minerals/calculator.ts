@@ -9,7 +9,11 @@ const buildMolarMassLookup = (minerals: readonly Mineral[]) =>
     return acc;
   }, {});
 
-const SALT_MOLAR_MASS = buildMolarMassLookup(Object.values(Salts));
+// Keyed by salt key name (e.g. "tableSalt") to match SaltRecipe entries
+const SALT_MOLAR_MASS = SaltKeys.reduce<Record<string, number>>((acc, key) => {
+  acc[key] = Salts[key].molarMass;
+  return acc;
+}, {});
 const ION_MOLAR_MASS = buildMolarMassLookup(ION_MINERALS);
 
 const createEmptyRecipe = (): SaltRecipe =>
@@ -38,6 +42,8 @@ export class MineralCalculator {
   constructor(private saltOptions: SaltOptions = DEFAULT_SALT_OPTIONS) { }
 
   calculate(targetWater: MineralWaterComposition, tapWater: MineralWaterComposition): SaltRecipe {
+    let calcium =
+      Math.max(0, targetWater.calcium - tapWater.calcium) / MINERALS.calcium.molarMass;
     let magnesium =
       Math.max(0, targetWater.magnesium - tapWater.magnesium) / MINERALS.magnesium.molarMass;
     let sodium = Math.max(0, targetWater.sodium - tapWater.sodium) / MINERALS.sodium.molarMass;
@@ -74,33 +80,26 @@ export class MineralCalculator {
     sulfate = Math.max(0, sulfate - recipe.epsomSalt);
 
     // CaSO4·0.5H2O: calcium + remaining sulfate
-    // recipe.plasterOfParis = Math.min(calcium, sulfate);
-    // calcium = Math.max(0, calcium - recipe.plasterOfParis);
-    // sulfate = Math.max(0, sulfate - recipe.plasterOfParis);
+    recipe.plasterOfParis = Math.min(calcium, sulfate);
+    calcium = Math.max(0, calcium - recipe.plasterOfParis);
+    sulfate = Math.max(0, sulfate - recipe.plasterOfParis);
 
-    // Mg(OH)2: magnesium + 2×bicarbonate (via alkalinity)
+    // Mg(OH)2: remaining magnesium + 2×bicarbonate (via alkalinity)
     recipe.magnesiumHydroxide = Math.min(magnesium, bicarbonate / 2);
     magnesium = Math.max(0, magnesium - recipe.magnesiumHydroxide);
     bicarbonate = Math.max(0, bicarbonate - recipe.magnesiumHydroxide * 2);
 
-    // MgCO3 (optional): remaining magnesium + 2×bicarbonate
-    // if (this.saltOptions.magnesiumCarbonate) {
-    //   recipe.magnesiumCarbonate = Math.min(magnesium, bicarbonate / 2);
-    //   magnesium = Math.max(0, magnesium - recipe.magnesiumCarbonate);
-    //   bicarbonate = Math.max(0, bicarbonate - recipe.magnesiumCarbonate * 2);
-    // }
-
-    // CaCO3 (optional): remaining calcium + 2×bicarbonate
-    // if (this.saltOptions.calciumCarbonate) {
-    //   recipe.calciumCarbonate = Math.min(calcium, bicarbonate / 2);
-    //   calcium = Math.max(0, calcium - recipe.calciumCarbonate);
-    //   bicarbonate = Math.max(0, bicarbonate - recipe.calciumCarbonate * 2);
-    // }
+    // CaCO3 (optional): remaining calcium + bicarbonate
+    if (this.saltOptions.calciumCarbonate) {
+      recipe.calciumCarbonate = Math.min(calcium, bicarbonate / 2);
+      calcium = Math.max(0, calcium - recipe.calciumCarbonate);
+      bicarbonate = Math.max(0, bicarbonate - recipe.calciumCarbonate * 2);
+    }
 
     return recipe;
   }
 
-  recipeToGrams(recipe: SaltRecipe, liters: number = 1): Record<string, number> {
+  recipeToMiligrams(recipe: SaltRecipe, liters: number = 1): Record<string, number> {
     return Object.entries(recipe).reduce<Record<string, number>>((acc, [salt, mmol]) => {
       const molarMass = SALT_MOLAR_MASS[salt] ?? 0;
       acc[salt] = (mmol * molarMass * liters) / 1000;
@@ -112,7 +111,8 @@ export class MineralCalculator {
     const getAmount = (key: keyof SaltRecipe) => recipe[key] ?? 0;
 
     return {
-      calcium: 0,
+      calcium:
+        (getAmount("plasterOfParis") + getAmount("calciumCarbonate")) * (ION_MOLAR_MASS["Ca"] ?? 0),
       magnesium:
         (getAmount("epsomSalt") + getAmount("magnesiumHydroxide")) * (ION_MOLAR_MASS["Mg"] ?? 0),
       sodium: (getAmount("tableSalt") + getAmount("bakingSoda")) * (ION_MOLAR_MASS["Na"] ?? 0),
@@ -120,9 +120,11 @@ export class MineralCalculator {
       bicarbonate:
         (getAmount("bakingSoda") +
           getAmount("potassiumBicarbonate") +
-          2 * getAmount("magnesiumHydroxide")) *
+          2 * getAmount("magnesiumHydroxide") +
+          2 * getAmount("calciumCarbonate")) *
         (ION_MOLAR_MASS["HCO3-"] ?? 0),
-      sulfate: getAmount("epsomSalt") * (ION_MOLAR_MASS["SO4--"] ?? 0),
+      sulfate:
+        (getAmount("epsomSalt") + getAmount("plasterOfParis")) * (ION_MOLAR_MASS["SO4--"] ?? 0),
       chloride: getAmount("tableSalt") * (ION_MOLAR_MASS["Cl-"] ?? 0),
       nitrate: 0,
     };
