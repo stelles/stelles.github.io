@@ -145,7 +145,6 @@ export const Experience: OrgEntry[] = [
         dateRange: "Jan 2018 - Feb 2020",
         responsibilities: [
           "Assumed team lead responsibilities upon manager departure, maintaining team cohesion and delivery continuity.",
-          "Led the data integration team in building a standardized aggregation methodology to normalize data across disparate sources.",
           "Led a speech-to-text pipeline project to unlock a new business vertical — integrated an S2T model into the Kafka pipeline, added a redaction post-processing service, and deployed an auto-scaling ECS cluster to meet throughput demands.",
           "Built a comprehensive integration testing framework for the computational pipeline, improving platform stability and reducing customer churn.",
           "Mentored junior engineers through regular 1-on-1 sessions.",
@@ -155,6 +154,7 @@ export const Experience: OrgEntry[] = [
         title: "SOFTWARE ENGINEER",
         dateRange: "June 2016 - Jan 2018",
         responsibilities: [
+          "Drove data integration efforts, building 50+ data integrations and standardizing aggregation methodology to normalize data across disparate sources.",
           "Dockerized core applications to reduce cloud costs, improve scaling, modernize dev environments, and enhance CI/CD.",
           "Built a GitLab CI/CD pipeline to build, validate, and deploy microservices, freeing the team to focus on feature development.",
         ],
