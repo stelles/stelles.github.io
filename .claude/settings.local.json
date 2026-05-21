@@ -30,7 +30,11 @@
       "Bash(npx tsc *)",
       "Bash(node *)",
       "Bash(bunx astro *)",
-      "Bash(bunx tsc *)"
+      "Bash(bunx tsc *)",
+      "WebSearch",
+      "WebFetch(domain:mineralwaterfit.com)",
+      "WebFetch(domain:pickaqua.com)",
+      "WebFetch(domain:fine-liquids.com)"
     ]
   },
   "hooks": {

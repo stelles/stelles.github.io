@@ -1,7 +1,7 @@
 import type { Mineral } from "./minerals";
 
 export interface Salt extends Mineral {
-  readonly chemistryName: string;
+  readonly chemistryName?: string;
 }
 
 export type SaltOptionItem = Salt & {

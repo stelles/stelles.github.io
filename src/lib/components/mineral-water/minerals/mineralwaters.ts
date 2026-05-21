@@ -87,16 +87,16 @@ export const MINERAL_WATERS = [
     },
   },
   {
-    name: "Burton",
+    name: "Cana",
     composition: {
-      calcium: 268,
-      magnesium: 62,
-      sodium: 30,
-      potassium: 0,
-      bicarbonate: 141,
-      sulfate: 638,
-      chloride: 36,
-      nitrate: 31,
+      calcium: 340,
+      magnesium: 33,
+      sodium: 9,
+      potassium: 2,
+      bicarbonate: 1100,
+      sulfate: 86,
+      chloride: 2,
+      nitrate: 0.2,
     },
   },
   {
@@ -149,6 +149,19 @@ export const MINERAL_WATERS = [
       sulfate: 1121,
       chloride: 10,
       nitrate: 2.9,
+    },
+  },
+  {
+    name: "Coralba",
+    composition: {
+      calcium: 54,
+      magnesium: 21,
+      sodium: 0.4,
+      potassium: 0.3,
+      bicarbonate: 255,
+      sulfate: 8.6,
+      chloride: 0.8,
+      nitrate: 2,
     },
   },
   {
@@ -269,19 +282,6 @@ export const MINERAL_WATERS = [
     },
   },
   {
-    name: "London",
-    composition: {
-      calcium: 90,
-      magnesium: 4,
-      sodium: 24,
-      potassium: 0,
-      bicarbonate: 123,
-      sulfate: 58,
-      chloride: 18,
-      nitrate: 3,
-    },
-  },
-  {
     name: "Mountain Valley Spring",
     composition: {
       calcium: 68,
@@ -295,19 +295,6 @@ export const MINERAL_WATERS = [
     },
   },
   {
-    name: "Munich",
-    composition: {
-      calcium: 80,
-      magnesium: 19,
-      sodium: 1,
-      potassium: 0,
-      bicarbonate: 164,
-      sulfate: 5,
-      chloride: 1,
-      nitrate: 3,
-    },
-  },
-  {
     name: "Neuselters",
     composition: {
       calcium: 100,
@@ -317,6 +304,19 @@ export const MINERAL_WATERS = [
       bicarbonate: 570,
       sulfate: 6,
       chloride: 60,
+      nitrate: 0,
+    },
+  },
+  {
+    name: "Paradi",
+    composition: {
+      calcium: 174,
+      magnesium: 50,
+      sodium: 470,
+      potassium: 12,
+      bicarbonate: 1780,
+      sulfate: 144,
+      chloride: 47,
       nitrate: 0,
     },
   },
@@ -334,19 +334,6 @@ export const MINERAL_WATERS = [
     },
   },
   {
-    name: "Pilsen",
-    composition: {
-      calcium: 7,
-      magnesium: 1,
-      sodium: 3,
-      potassium: 0,
-      bicarbonate: 9,
-      sulfate: 6,
-      chloride: 5,
-      nitrate: 0,
-    },
-  },
-  {
     name: "PurPur",
     composition: {
       calcium: 24,
@@ -357,6 +344,19 @@ export const MINERAL_WATERS = [
       sulfate: 28.5,
       chloride: 1.8,
       nitrate: 0,
+    },
+  },
+  {
+    name: "Radenska",
+    composition: {
+      calcium: 230,
+      magnesium: 79,
+      sodium: 520,
+      potassium: 79,
+      bicarbonate: 2100,
+      sulfate: 100,
+      chloride: 69,
+      nitrate: 2.2,
     },
   },
   {
@@ -526,6 +526,19 @@ export const MINERAL_WATERS = [
       sulfate: 0,
       chloride: 30,
       nitrate: 0,
+    },
+  },
+  {
+    name: "Saratoga",
+    composition: {
+      calcium: 5.5,
+      magnesium: 1.1,
+      sodium: 2.1,
+      potassium: 0,
+      bicarbonate: 11.3,
+      sulfate: 4.5,
+      chloride: 5.9,
+      nitrate: 0.42,
     },
   },
   {
