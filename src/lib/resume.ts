@@ -6,14 +6,13 @@ export const Sam = {
   title: "Senior Software Engineer",
   summary:
     "Senior Full-Stack Platform Engineer with 10+ years specializing in securing and scaling B2B SaaS platforms from Seed to Series B. Proven ownership of mission-critical features, cloud infrastructure (IaC), DevOps automation (CI/CD), and high-throughput computational pipelines.",
-  telephone: "(206) 437-5268",
   email: "samuelstelle@gmail.com",
   location: "Seattle, WA",
   github: "https://github.com/stelles",
   linkedin: "https://www.linkedin.com/in/samuel-stelle/",
 };
 export const contactLinks: ContactLink[] = [
-  { href: `tel:${Sam.telephone}`, icon: "mdi:phone", text: Sam.telephone },
+  // { href: `tel:${Sam.telephone}`, icon: "mdi:phone", text: Sam.telephone },
   { href: `mailto:${Sam.email}`, icon: "mdi:email", text: Sam.email },
   { href: Sam.github, icon: "mdi:github", text: "stelles", external: true },
   {
